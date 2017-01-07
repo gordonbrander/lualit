@@ -7,7 +7,7 @@ source = {
 description = {
   summary = "Literate programming for Lua",
   detailed = [[
-  Lualit is literate programming for lua. It lets you write your Lua as a
+  Lualit is literate programming for Lua. It lets you write your Lua as a
   markdown file with a `.lualit` extension.
   
   Indented is considered executable Lua code. Everything else is treated as
@@ -18,6 +18,10 @@ description = {
   Code is read more often than it is written. Lualit encourages
   self-documenting code through writing comments-first.
   It's text-driven development!
+
+  More:
+  https://en.wikipedia.org/wiki/Literate_programming
+  https://jashkenas.github.io/docco/
   ]],
   homepage = "https://github.com/gordonbrander/lualit",
   license = "MIT/X11"
