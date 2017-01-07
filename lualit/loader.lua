@@ -25,6 +25,7 @@ local function create_lualit_path(lua_path)
     local initial = template:match("^(.-)%.lua$")
     if initial then
       table.insert(lualit_paths, initial .. ".lualit")
+      table.insert(lualit_paths, initial .. ".lua.md")
     end
   end
   -- Join path table with delimiter and return string.
