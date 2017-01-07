@@ -1,3 +1,7 @@
+-- # Lualit Loader
+--
+-- Tools for loading and parsing `.lualit` files.
+
 local loader = {}
 
 -- Quick and dirty way to transform a lualit string to lua string.
@@ -31,18 +35,27 @@ function loader.loadstring(s)
   return loadstring(loader.string_to_lua_dirty(s))
 end
 
-function loader.loadfile(file_path)
+function loader.load_all(file_path)
   local file = io.open(file_path, "rb")
   if file then
     -- Compile and return the module
     local s = file:read("*a")
     file:close()
     if s then
-      return loader.loadstring(s)
+      return s
     end
     return nil, string.format('Could not read file "%s"', file_path)
   end
   return nil, string.format('Could not find file "%s"', file_path)
+end
+
+function loader.loadfile(file_path)
+  local s, err = loader.load_all(file_path)
+  if not s then
+    return s, err
+  else
+    return loader.loadstring(s)
+  end
 end
 
 -- See "Compilation, Execution, and Errors", https://www.lua.org/pil/8.html
@@ -70,6 +83,7 @@ function loader.load_module(name)
 end
 
 -- Registers the module loader.
+-- Call this at the entry point of your scripts.
 function loader.register_loader()
   package.lualit_path = create_lualit_path(package.path)
   -- Insert just after the standard .lua package loader
