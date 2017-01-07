@@ -1,6 +1,6 @@
 # Lualit
 
-Lualit is literate programming for Lua. It lets you write your Lua code as a
+**Lualit is literate programming for Lua**. It lets you write your Lua code as a
 markdown file with a `.lualit` or `.lua.md` extension. In Lualit, indented
 text is considered to be Lua code. Everything else is treated as a comment.
 
