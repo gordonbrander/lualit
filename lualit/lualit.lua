@@ -69,17 +69,6 @@ function lualit.lines_to_lua(lines)
   end
 end
 
--- Lualit module loader. You can register this to be able to load `.lualit`
--- files directly with `require`.
-function lualit.load_module()
-  -- http://lua-users.org/wiki/LuaModulesLoader
-end
-
--- Registers the module loader.
-function lualit.register_loader()
-  table.insert(package.loaders, 2, lualit.load_module)
-end
-
 if TEST then
   -- local x = lualit.line_to_lua("", "What is the deal")
   -- print(x)

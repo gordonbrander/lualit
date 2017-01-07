@@ -1,0 +1,7 @@
+#!/usr/bin/env lua
+-- First, register lualit loader
+local loader = require("lualit.loader")
+loader.register_loader()
+-- Then load module passed as first arg
+local args = {...}
+loader.dofile(args[1])
