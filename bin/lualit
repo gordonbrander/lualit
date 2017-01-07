@@ -1,7 +1,21 @@
 #!/usr/bin/env lua
+
+local help = [=[Usage: %s [options] script
+
+Parse and execute a .lualit file.
+
+Arguments:
+    script          The .lualit file path
+
+Options:
+    -h --help       Print this message and exit
+]=]
 -- First, register lualit loader
 local loader = require("lualit.loader")
 loader.register_loader()
 -- Then load module passed as first arg
-local args = {...}
-loader.dofile(args[1])
+if arg[1] == '-h' or arg[1] == '--help' then
+  print(string.format(help, arg[0]))
+else
+  loader.dofile(args[1])
+end
