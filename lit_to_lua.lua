@@ -1,3 +1,5 @@
 local lualit = require("lualit.lualit")
 
-lualit.lit_to_lua_file()
+for parsed in lualit.lines_to_lua(io.lines()) do
+  io.write(parsed)
+end

@@ -1,20 +1,15 @@
 -- # Lualit
 --
--- Lualit is literate lua. Lualit lets you write your Lua as a markdown file
--- with a `.md` or `.lualit` extension.
+-- Lualit is literate lua. It lets you write your Lua as a markdown file
+-- with a `.lualit` extension.
 --
--- Anything in a lua code fence is considered Lua code. All the other things are
+-- Anything indented is considered Lua code. All the other things are
 -- treated as a comments.
 --
---     This is a comment
+-- @TODO
 --
---     ```lua
---     print("Hello from Lua.")
---     print("This is interpreted as Lua code.")
---     ```
---
--- Because the code is fenced, GitHub-flavored markdown parsers will even
--- color-code the code blocks nicely!
+-- * Make sure there is an empty line between text and indented blocks.
+-- * Hardwrap comments at 80 chars when converting to lua
 --
 -- ## Implementation
 --
@@ -23,60 +18,54 @@
 -- Create a table to store our module in.
 local lualit = {}
 
--- Define some patterns for identifying text tokens.
-local FENCE_START = '^```+lua'
-local FENCE_END = '^```+'
+local INDENT = string.rep(" ", 4)
+local INDENTED_CODE_BLOCK = '^%s%s%s%s'
 local COMMENT_BLOCK = '^%-%-%s?'
 
-function lualit.line_to_lua(is_in_fence, line)
-  if is_in_fence then
-    if line:match(FENCE_END) then
-      return false, ""
-    else
-      return true, line .. "\n"
-    end
+local START_TOKEN = 0
+local BLANK_TOKEN = 1
+local COMMENT_TOKEN = 2
+local CODE_TOKEN = 3
+
+function lualit.line_to_lua(prev_token, line)
+  if line == "" then
+    return BLANK_TOKEN, "\n"
+  elseif line:match(INDENTED_CODE_BLOCK) then
+    return CODE_TOKEN, (line:gsub(INDENTED_CODE_BLOCK, "", 1) .. "\n")
   else
-    if line == "" then
-      return is_in_fence, "\n"
-    elseif line:match(FENCE_START) then
-      return true, ""
-    else
-      return false, "-- " .. line .. "\n"
-    end
+    return COMMENT_TOKEN, ("-- " .. line .. "\n")
   end
 end
 
-function lualit.line_to_lit(is_in_fence, line)
-  if is_in_fence then
-    if line == "" then
-      return false, "```\n\n" .. line
-    else
-      return true, line .. "\n"
-    end
+function lualit.line_to_lit(prev_token, line)
+  if line == "" then
+    return BLANK_TOKEN, "\n"
+  elseif line:match(COMMENT_BLOCK) then
+    return COMMENT_TOKEN, (line:gsub(COMMENT_BLOCK, "", 1) .. "\n")
+  elseif prev_token == COMMENT_TOKEN then
+    return CODE_TOKEN, ("\n" .. INDENT .. line .. "\n")
   else
-    if line == "" then
-      return is_in_fence, "\n"
-    elseif line:match(COMMENT_BLOCK) then
-      return false, line:gsub(COMMENT_BLOCK, "", 1) .. "\n"
-    else
-      return true, "```lua\n" .. line .. "\n"
+    return CODE_TOKEN, (INDENT .. line .. "\n")
+  end
+end
+
+function lualit.lines_to_lit(lines)
+  local token, parsed = START_TOKEN, ""
+  return function()
+    for line in lines do
+      token, parsed = lualit.line_to_lit(token, line)
+      return parsed
+    end    
+  end
+end
+
+function lualit.lines_to_lua(lines)
+  local token, parsed = START_TOKEN, ""
+  return function()
+    for line in lines do
+      token, parsed = lualit.line_to_lua(token, line)
+      return parsed
     end
-  end
-end
-
-function lualit.lit_to_lua_file()
-  local is_in_fence, parsed = false, ""
-  for line in io.lines() do
-    is_in_fence, parsed = lualit.line_to_lua(is_in_fence, line)
-    io.write(parsed)
-  end
-end
-
-function lualit.lua_to_lit_file()
-  local is_in_fence, parsed = false, ""
-  for line in io.lines() do
-    is_in_fence, parsed = lualit.line_to_lit(is_in_fence, line)
-    io.write(parsed)
   end
 end
 
