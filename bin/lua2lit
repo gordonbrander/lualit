@@ -9,5 +9,5 @@ if arg[1] == '-h' or arg[1] == '--help' then
   print(help)
 else
   local input = io.read("*a")
-  io.write(parser.parse_to_lua(input))
+  io.write(parser.parse_to_lit(input))
 end
