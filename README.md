@@ -11,8 +11,8 @@ into Lua and run at a later time.
 Because it compiles to Lua code, it's compatible with all existing Lua
 libraries, as well as alternative Lua implementations like LuaJIT.
 
-Bonus points: Lualit compiles to pretty documentation with
-[Docco](https://github.com/rgieseke/locco).
+Bonus points: Lualit can compile pretty documentation with
+[Docco](https://jashkenas.github.io/docco/).
 
 Code is read more often than it is written. Lualit encourages self-documenting
 code by letting you write code for humans first. It's text-driven development!
