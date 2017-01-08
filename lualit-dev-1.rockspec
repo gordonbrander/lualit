@@ -39,8 +39,7 @@ build = {
   install = {
     bin = {
       "bin/lualit",
-      "bin/lit2lua",
-      "bin/lua2lit"
+      "bin/lit2lua"
     }
   }
 }
