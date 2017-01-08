@@ -10,7 +10,7 @@ function parser.parse_to_lua(input_string)
     :gsub("^(%S)", "-- %1", 1)
     -- Comment any non-space text that occurs on a new line
     :gsub("(\n)(%S)", "%1-- %2")
-    -- "Outdent" any indented text
+    -- "Outdent" any indented code.
     :gsub("\n    ", "\n")
   return output_string
 end
