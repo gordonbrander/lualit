@@ -9,7 +9,7 @@ function parser.parse_to_lua(input_string)
     -- Comment out any non-space text at beginning of lua string
     :gsub("^(%S)", "-- %1", 1)
     -- Comment any non-space text that occurs on a new line
-    :gsub("\n(%S)", "\n-- %2")
+    :gsub("\n(%S)", "\n-- %1")
     -- "Outdent" any indented code.
     :gsub("\n    ", "\n")
   return output_string
