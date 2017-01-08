@@ -11,13 +11,17 @@ It's text-driven development!
 
 Running via command line:
 
-    lualit path/to/file.lualit
+```bash
+lualit path/to/file.lualit
+```
 
 You can also allow `.lualit` to be required from Lua by registering the loader plugin from within your Lua entry script:
 
-    require("lualit.register")
-    local my_lualit_module = require("my_lualit_module")
-    print(my_lualit_module.some_function())
+```lua
+require("lualit.register")
+local my_lualit_module = require("my_lualit_module")
+print(my_lualit_module.some_function())
+```
 
 This will will register a loader that will look for and run `.lualit` and
 `.lua.md` files in your Lua path.
@@ -33,6 +37,7 @@ This will will register a loader that will look for and run `.lualit` and
 
 Syntax highlighting support:
 
+- [ ] Everywhere (via code fencing)
 - [x] Vim: [gordonbrander/vim_lualit](github.com/gordonbrander/vim_lualit)
 - [ ] SublimeText/TextMate
 - [ ] Emacs

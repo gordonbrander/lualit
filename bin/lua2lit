@@ -1,7 +1,0 @@
-#!/usr/bin/env lua
-require("lualit.register")
-local lualit = require("lualit.format")
-
-for parsed in lualit.lines_to_lit(io.lines()) do
-  io.write(parsed)
-end

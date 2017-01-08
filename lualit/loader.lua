@@ -3,16 +3,7 @@
 -- Tools for loading and parsing `.lualit` files.
 
 local loader = {}
-
--- Quick and dirty way to transform a lualit string to lua string.
-function loader.string_to_lua_dirty(s)
-  -- Comment out any first line if it does not begin with a a space.
-  -- Then comment out any line that does not begin with a space.
-  -- We retain the same number of lines after replacing.
-  -- This aids with debugging, since lualit and lua file are 1:1, program
-  -- errors will show correct line numbers.
-  return s:gsub("^(%S)", "-- %1", 1):gsub("(\n)(%S)", "%1-- %2")
-end
+local lit = require("lualit.lit_parser")
 
 -- Create a searchpath for lualit files.
 -- Used by register_loader to create `package.lualit_path` property.
@@ -33,10 +24,10 @@ local function create_lualit_path(lua_path)
 end
 
 function loader.loadstring(s)
-  return loadstring(loader.string_to_lua_dirty(s))
+  return loadstring(lit.parse_to_lua(s))
 end
 
-function loader.load_all(file_path)
+function loader.read_all(file_path)
   local file = io.open(file_path, "rb")
   if file then
     -- Compile and return the module
@@ -51,7 +42,7 @@ function loader.load_all(file_path)
 end
 
 function loader.loadfile(file_path)
-  local s, err = loader.load_all(file_path)
+  local s, err = loader.read_all(file_path)
   if not s then
     return s, err
   else

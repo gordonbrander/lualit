@@ -1,1 +1,0 @@
-less -f _lualit.lua | ./bin/lua2lit > _lualit.lualit
