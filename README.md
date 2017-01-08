@@ -71,7 +71,7 @@ Syntax highlighting support:
 - [x] Dynamic loader
 - [ ] lualit format (wrap lines)
 - [ ] lualit to lua, nicely formatted? (This could be used for distribution?)
-- [ ] lua to Lualit? (This could be used for documentation?)
+- [x] lua to lualit
 
 Note that static compilers don't have to keep line numbers... we only
 need to care about that when converting at runtime.
