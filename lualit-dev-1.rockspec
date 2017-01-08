@@ -40,6 +40,7 @@ build = {
     bin = {
       "bin/lualit",
       "bin/lit2lua"
+      "bin/lua2lit"
     }
   }
 }
