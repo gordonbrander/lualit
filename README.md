@@ -8,9 +8,6 @@ Indented text is treated as Lua code. Everything else is treated as a comment.
 Lualit can be dynamically compiled and run using a loader plugin, or compiled
 into Lua and run at a later time.
 
-Because it compiles to Lua code, it's compatible with all existing Lua
-libraries, as well as alternative Lua implementations like LuaJIT.
-
 Bonus points: Lualit can compile pretty documentation with
 [Docco](https://jashkenas.github.io/docco/).
 
@@ -29,12 +26,11 @@ print(my_lualit_module.some_function())
 ```
 
 This will will register a loader that will look for and run `.lualit` and
-`.lua.md` files in your Lua path.
+`.lua.md` files in your Lua path. The Lualit loader will be careful to retain
+the same line numbers for code, so so that errors will report correct
+line numbers.
 
-The Lualit loader will be careful to retain the same line numbers for code, so
-so that errors will report correct line numbers.
-
-Running a `.lualit` file directly is easy to:
+Running a `.lualit` file directly is also easy:
 
 ```bash
 lualit path/to/file.lualit
@@ -49,6 +45,21 @@ Here's how to use it to compile a Lualit file:
 
 ```bash
 less -f "some_file.lua.md" | lit2lua
+```
+
+## Documentation with Docco
+
+You can generate pretty documentation pages from your Lualit files using
+[Docco](https://github.com/jashkenas/docco). Just install `docco`:
+
+```bash
+npm install -g docco
+```
+
+And run it on your Lualit files:
+
+```bash
+docco path/to/file.lua.md
 ```
 
 ## Installing
@@ -69,12 +80,13 @@ Syntax highlighting support:
 
 - [x] lualit to lua
 - [x] Dynamic loader
-- [ ] lualit format (wrap lines)
-- [ ] lualit to lua, nicely formatted? (This could be used for distribution?)
-- [x] lua to lualit
+- [x] Docco compatibility
 
-Note that static compilers don't have to keep line numbers... we only
-need to care about that when converting at runtime.
+Maybe:
+
+- [ ] lualit format (wrap lines)
+- [ ] `lit2lua --nice` nicely formatted Lua (wraps lines, etc). This could be useful for distribution. But it wouldn't retain line numbers.
+- [ ] lua to lualit
 
 ## Thanks
 
