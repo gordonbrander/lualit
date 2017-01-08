@@ -16,6 +16,9 @@ into Lua and run at a later time.
 Because it compiles to Lua code, it's compatible with all existing Lua
 libraries, as well as alternative Lua implementations like LuaJIT.
 
+Bonus points: Lualit compiles to pretty documentation with
+[Docco](https://github.com/rgieseke/locco).
+
 ## Using
 
 Adding Lualit support is easy. Just `require("lualit.register")` and Lua will
