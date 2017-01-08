@@ -1,5 +1,13 @@
 #!/usr/bin/env lua
 local lit = require("lualit.lit_parser")
 
-local input = io.read("*a")
-io.write(lit.parse_to_lua(input))
+local help = [=[Usage: less -f "some_file.lua.md" | lit2lua
+
+Parse Lualit sent to stdin to Lua. Writes result to stdout.
+]=]
+if arg[1] == '-h' or arg[1] == '--help' then
+  print(help)
+else
+  local input = io.read("*a")
+  io.write(lit.parse_to_lua(input))
+end

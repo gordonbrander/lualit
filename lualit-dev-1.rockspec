@@ -36,6 +36,9 @@ build = {
     ["lualit.loader"] = "lualit/loader.lua"
   },
   install = {
-    bin = { "bin/lualit" }
+    bin = {
+      "bin/lualit",
+      "bin/lit2lua"
+    }
   }
 }
