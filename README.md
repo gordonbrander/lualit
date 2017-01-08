@@ -3,12 +3,7 @@
 **Lualit is literate programming for Lua**. It lets you write your Lua code as
 a markdown file with a `.lualit` or `.lua.md` extension.
 
-Code is read more often than it is written. Lualit encourages self-documenting
-code by letting you write code for humans first. It's text-driven development!
-
-Indented text is treated as Lua code. Code can also be fenced with "\`\`\`lua",
-[in the style of Github-flavored Markdown](https://help.github.com/articles/creating-and-highlighting-code-blocks/).
-Everything else is treated as a comment.
+Indented text is treated as Lua code. Everything else is treated as a comment.
 
 Lualit can be dynamically compiled and run using a loader plugin, or compiled
 into Lua and run at a later time.
@@ -18,6 +13,9 @@ libraries, as well as alternative Lua implementations like LuaJIT.
 
 Bonus points: Lualit compiles to pretty documentation with
 [Docco](https://github.com/rgieseke/locco).
+
+Code is read more often than it is written. Lualit encourages self-documenting
+code by letting you write code for humans first. It's text-driven development!
 
 ## Using
 
