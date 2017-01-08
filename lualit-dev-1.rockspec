@@ -33,7 +33,8 @@ build = {
   type = "builtin",
   modules = {
     ["lualit.register"] = "lualit/register.lua",
-    ["lualit.loader"] = "lualit/loader.lua"
+    ["lualit.loader"] = "lualit/loader.lua",
+    ["lualit.lit_parser"] = "lualit/lit_parser.lua"
   },
   install = {
     bin = {
