@@ -69,7 +69,6 @@ docco path/to/file.lua.md
 
 Syntax highlighting support:
 
-- [x] Markdown syntax highlighting (via code fences and Github-flavored Markdown)
 - [x] Vim: [gordonbrander/vim_lualit](github.com/gordonbrander/vim_lualit)
 - [ ] SublimeText/TextMate
 - [ ] Emacs
