@@ -14,7 +14,8 @@ description = {
   Lualit can be dynamically compiled and run using a loader plugin, or compiled
   into Lua and run at a later time.
 
-  Bonus points: Lualit can compile pretty documentation with
+  Lualit files get pretty syntax highlighting on GitHub (via `.lua.md`) and can
+  be compiled to pretty documentation with
   Docco (https://jashkenas.github.io/docco/).
   ]],
   homepage = "https://github.com/gordonbrander/lualit",
