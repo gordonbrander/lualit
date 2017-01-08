@@ -13,6 +13,14 @@ Bonus points: Lualit can compile pretty documentation with
 Code is read more often than it is written. Lualit encourages self-documenting
 code by letting you write code for humans first. It's text-driven development!
 
+## Installing
+
+To install with [Luarocks](https://luarocks.org/):
+
+    luarocks install lualit
+
+You can also just download the files and use them directly.
+
 ## Using
 
 Adding Lualit support is easy. Just `require("lualit.register")` and Lua will
@@ -60,10 +68,6 @@ And run it on your Lualit files:
 ```bash
 docco path/to/file.lua.md
 ```
-
-## Installing
-
-@TODO
 
 ## Editor Support
 
