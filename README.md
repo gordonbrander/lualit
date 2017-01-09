@@ -79,15 +79,23 @@ Syntax highlighting support:
 
 ## @TODO
 
-- [x] lualit to lua
+- [x] `.lualit` to `.lua`
 - [x] Dynamic loader
 - [x] Docco compatibility
+- [ ] Precompile `.lualit` to luac binaries
+- [ ] Auto-compile `.lualit` to luac binaries at runtime (the way Python does with `.pyc`)
+- [ ] Support compiling [metalua](http://metalua.luaforge.net/) via `.mlua.md` or `.metalua.md`
 
 Maybe:
 
 - [ ] lualit format (wrap lines)
 - [ ] `lit2lua --nice` nicely formatted Lua (wraps lines, etc). This could be useful for distribution. But it wouldn't retain line numbers.
 - [ ] lua to lualit
+- [ ] `.moon.md` to `.lua`
+
+Ideas:
+
+- How can we support writing tests inline, then removing them at compile time? Something similar to Python's doctest. Note this will make problems with line numbers if not careful.
 
 ## Thanks
 
