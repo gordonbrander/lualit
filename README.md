@@ -42,15 +42,15 @@ Running a `.lualit` file directly is also easy:
 lualit path/to/file.lualit
 ```
 
-## Compiling `.lualit` to `.lua`
+## Compiling
 
-You can also compile Lualit to lua using the `lit2lua` command line utility.
+You can also precompile Lualit to lua using the `lit2lua` command line utility.
 `lit2lua` takes Lualit via `stdin` and returns valid lua via `stdout`.
 
 Here's how to use it to compile a Lualit file:
 
 ```bash
-less -f "some_file.lua.md" | lit2lua
+less -f "some_file.lua.md" | lit2lua > some_file.lua
 ```
 
 ## Documentation with Docco
@@ -77,7 +77,7 @@ Syntax highlighting support:
 - [ ] Emacs
 - [ ] Micro
 
-## @TODO
+## To-do
 
 - [x] `.lualit` to `.lua`
 - [x] Dynamic loader
