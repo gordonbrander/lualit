@@ -84,14 +84,14 @@ Syntax highlighting support:
 - [x] Docco compatibility
 - [ ] Precompile `.lualit` to luac binaries
 - [ ] Auto-compile `.lualit` to luac binaries at runtime (the way Python does with `.pyc`)
-- [ ] Support compiling [metalua](http://metalua.luaforge.net/) via `.mlua.md` or `.metalua.md`
+- [ ] [metalua](http://metalua.luaforge.net/) `.mlua.md` to `.lua`
+- [ ] `.moon.md` to `.lua`
 
 Maybe:
 
 - [ ] lualit format (wrap lines)
 - [ ] `lit2lua --nice` nicely formatted Lua (wraps lines, etc). This could be useful for distribution. But it wouldn't retain line numbers.
 - [ ] lua to lualit
-- [ ] `.moon.md` to `.lua`
 
 Ideas:
 
